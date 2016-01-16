@@ -5,6 +5,8 @@
  */
 var path = require('path');
 var webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 var CopyWebpackPlugin  = require('copy-webpack-plugin');
 var HtmlWebpackPlugin  = require('html-webpack-plugin');
 var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
@@ -67,7 +69,12 @@ module.exports = {
       { test: /\.css$/,   loader: 'raw-loader' },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader' }
+      { test: /\.html$/,  loader: 'raw-loader' },
+
+      { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'] },
+      { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' },
+      // Bootstrap 4
+      { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery' }
 
       // if you add a loader include the resolve file extension above
     ]
@@ -86,8 +93,15 @@ module.exports = {
         'ENV': JSON.stringify(metadata.ENV),
         'NODE_ENV': JSON.stringify(metadata.ENV)
       }
+    }),
+    new ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
     })
   ],
+
+  postcss: [autoprefixer],
 
   // Other module loader config
   tslint: {
