@@ -12,7 +12,7 @@ var HtmlWebpackPlugin  = require('html-webpack-plugin');
 var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
 var metadata = {
-  title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
+  title: 'MoonSongs',
   baseUrl: '/',
   host: 'localhost',
   port: 3000,
@@ -73,7 +73,7 @@ module.exports = {
 
       { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'] },
       { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' },
-      // Bootstrap 4
+      // Bootstrap 3
       { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery' }
 
       // if you add a loader include the resolve file extension above

@@ -7,6 +7,7 @@ var path = require('path');
 // Webpack Plugins
 var webpack = require('webpack');
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
+const autoprefixer = require('autoprefixer');
 var DefinePlugin = require('webpack/lib/DefinePlugin');
 var OccurenceOrderPlugin = require('webpack/lib/optimize/OccurenceOrderPlugin');
 var DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
@@ -20,7 +21,7 @@ var HOST = process.env.HOST || 'localhost';
 var PORT = process.env.PORT || 8080;
 
 var metadata = {
-  title: 'Angular2 Webpack Starter by @gdi2990 from @AngularClass',
+  title: 'MoonSongs',
   baseUrl: '/',
   host: HOST,
   port: PORT,
@@ -94,7 +95,12 @@ module.exports = {
       { test: /\.css$/,   loader: 'raw-loader' },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader' }
+      { test: /\.html$/,  loader: 'raw-loader' },
+
+      { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'] },
+      { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' },
+      // Bootstrap 3
+      { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery' }
 
       // if you add a loader include the file extension
     ]
@@ -128,6 +134,11 @@ module.exports = {
       }
     }),
     new ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      jquery: 'jquery'
+    }),
+    new ProvidePlugin({
       // TypeScript helpers
       '__metadata': 'ts-helper/metadata',
       '__decorate': 'ts-helper/decorate',
@@ -151,6 +162,9 @@ module.exports = {
    // include uglify in production
   ],
   // Other module loader config
+
+  postcss: [autoprefixer],
+
   tslint: {
     emitErrors: true,
     failOnHint: true
