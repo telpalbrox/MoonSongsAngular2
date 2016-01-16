@@ -15,7 +15,19 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li router-active="active"><a [routerLink]=" ['Home'] ">Home</a></li>
-        <li router-active="active"><a [routerLink]=" ['Login'] ">Login</a></li>
+        <li router-active="active" *ngIf="!isLogged()"><a [routerLink]=" ['Login'] ">Login</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right navbar-form">
+        <li>
+          <div class="btn-group" *ngIf="isLogged()">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Welcome {{ getUserName() }}! <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a (click)="logout()">Logout</a></li>
+            </ul>
+          </div>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

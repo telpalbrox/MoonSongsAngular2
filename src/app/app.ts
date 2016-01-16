@@ -10,6 +10,7 @@ import {Home} from './home/home';
 import {Login} from './login/login';
 import {LoginService} from './login/providers/login.service';
 import {Nav} from './nav/nav';
+import {AuthService} from './providers/auth.service';
 
 
 /*
@@ -18,7 +19,7 @@ import {Nav} from './nav/nav';
  */
 @Component({
   selector: 'app',
-  providers: [ ...FORM_PROVIDERS, LoginService ],
+  providers: [ ...FORM_PROVIDERS, LoginService, AuthService ],
   directives: [ ...ROUTER_DIRECTIVES, RouterActive, Nav ],
   pipes: [],
   styles: [`
