@@ -16,16 +16,18 @@
       <ul class="nav navbar-nav">
         <li router-active="active"><a [routerLink]=" ['Home'] ">Home</a></li>
         <li router-active="active" *ngIf="canListen()"><a [routerLink]=" ['Songs'] ">Songs</a></li>
-        <li router-active="active" *ngIf="!isLogged()"><a [routerLink]=" ['Login'] ">Login</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-form">
         <li>
-          <div class="btn-group" *ngIf="isLogged()">
+          <div class="btn-group">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Welcome {{ getUserName() }}! <span class="caret"></span>
+              <span *ngIf="!isLogged()">Yo have no started session</span>
+              <span *ngIf="isLogged()">Welcome {{ getUserName() }}!</span>
+              <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a (click)="logout()">Logout</a></li>
+              <li *ngIf="!isLogged()"><a [routerLink]=" ['Login'] ">Login</a></li>
+              <li *ngIf="isLogged()"><a (click)="logout()">Logout</a></li>
             </ul>
           </div>
         </li>
