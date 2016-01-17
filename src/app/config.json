@@ -1,3 +1,4 @@
 {
-  "endpointUrl": "http://albertolunadev.com:9000/api"
+  "endpointUrl": "http://albertolunadev.com:9000/api",
+  "serverUrl": "http://albertolunadev.com:9000"
 }

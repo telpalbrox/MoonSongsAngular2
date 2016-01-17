@@ -11,6 +11,8 @@ import {Login} from './login/login';
 import {LoginService} from './login/providers/login.service';
 import {Nav} from './nav/nav';
 import {AuthService} from './providers/auth.service';
+import {Songs} from './songs/songs';
+import {SongsService} from './providers/songs.service';
 
 
 /*
@@ -19,7 +21,7 @@ import {AuthService} from './providers/auth.service';
  */
 @Component({
   selector: 'app',
-  providers: [ ...FORM_PROVIDERS, LoginService, AuthService ],
+  providers: [ ...FORM_PROVIDERS, LoginService, AuthService, SongsService ],
   directives: [ ...ROUTER_DIRECTIVES, RouterActive, Nav ],
   pipes: [],
   styles: [`
@@ -58,6 +60,7 @@ import {AuthService} from './providers/auth.service';
 @RouteConfig([
   { path: '/', component: Home, name: 'Home' },
   { path: '/login', component: Login, name: 'Login' },
+  { path: '/songs', component: Songs, name: 'Songs' },
   { path: '/**', redirectTo: ['Home'] }
 ])
 export class App {

@@ -15,6 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li router-active="active"><a [routerLink]=" ['Home'] ">Home</a></li>
+        <li router-active="active" *ngIf="canListen()"><a [routerLink]=" ['Songs'] ">Songs</a></li>
         <li router-active="active" *ngIf="!isLogged()"><a [routerLink]=" ['Login'] ">Login</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-form">

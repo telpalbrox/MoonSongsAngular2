@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {RouterActive} from '../directives/router-active';
 import {Inject} from 'angular2/core';
 import {AuthService} from '../providers/auth.service';
@@ -15,10 +15,17 @@ import {User} from '../api';
   ]
 })
 export class Nav {
-  constructor(@Inject(AuthService) private authService: AuthService) { }
+  constructor(
+    @Inject(AuthService) private authService: AuthService,
+    @Inject(Router) private router: Router
+  ) { }
 
   getUserName(): string {
     return this.authService.getUser() ? this.authService.getUser().userName : null;
+  }
+
+  canListen(): boolean {
+    return this.authService.getUser() ? this.authService.getUser().permissions.canListen : false;
   }
 
   isLogged(): boolean {
@@ -27,5 +34,6 @@ export class Nav {
 
   logout() {
     this.authService.logout();
+    this.router.navigateByUrl('/');
   }
 }

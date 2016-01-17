@@ -1,0 +1,42 @@
+<div class="song-container row">
+  <div class="col-md-3 song-col" title="Artist">
+    <div class="media">
+      <div class="media-left media-middle">
+        <img class="media-object cover" [src]="getArtistUrl()">
+      </div>
+      <div class="media-body">
+        <p><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{song.artist}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 song-col" title="Album">
+    <div class="media">
+      <div class="media-left media-middle">
+        <img class="media-object cover" [src]="getCoverUrl()">
+      </div>
+      <div class="media-body">
+        <p><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> {{song.album}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 song-col" title="Title">
+    <span class="glyphicon glyphicon-music" aria-hidden="true"></span>
+    {{song.title}}
+  </div>
+  <div class="col-md-3 song-col">
+    <div class="btn-group" role="group" aria-label="...">
+      <button type="button" class="btn btn-default" title="Play">
+        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="btn btn-default" title="Add to queue">
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="btn btn-default" title="Remove">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="btn btn-default" title="Edit">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</div>

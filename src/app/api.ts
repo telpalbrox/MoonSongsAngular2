@@ -7,7 +7,7 @@ export interface Permissions {
 export interface User {
   email: string;
   userName: string;
-  permissions: Permissions[];
+  permissions: Permissions;
 }
 
 export interface Song {

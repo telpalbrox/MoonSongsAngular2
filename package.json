@@ -41,7 +41,6 @@
     "es6-shim": "^0.33.3",
     "es7-reflect-metadata": "^1.4.0",
     "jquery": "^2.2.0",
-    "jwt-decode": "^1.5.0",
     "rxjs": "5.0.0-beta.0",
     "zone.js": "0.5.10"
   },
