@@ -13,6 +13,7 @@ import {Nav} from './nav/nav';
 import {AuthService} from './providers/auth.service';
 import {Songs} from './songs/songs';
 import {SongsService} from './providers/songs.service';
+import {MusicService} from './providers/music.service';
 
 
 /*
@@ -21,24 +22,15 @@ import {SongsService} from './providers/songs.service';
  */
 @Component({
   selector: 'app',
-  providers: [ ...FORM_PROVIDERS, LoginService, AuthService, SongsService ],
+  providers: [
+    ...FORM_PROVIDERS,
+    LoginService,
+    AuthService,
+    SongsService,
+    MusicService
+  ],
   directives: [ ...ROUTER_DIRECTIVES, RouterActive, Nav ],
   pipes: [],
-  styles: [`
-    nav ul {
-      display: inline;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      width: 60px;
-    }
-    nav li {
-      display: inline;
-    }
-    nav li.active {
-      background-color: lightgray;
-    }
-  `],
   template: `
     <header>
       <moon-nav></moon-nav>

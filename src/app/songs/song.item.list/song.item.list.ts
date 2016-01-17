@@ -1,5 +1,6 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, Inject} from 'angular2/core';
 import {User, Song} from '../../api';
+import {MusicService} from '../../providers/music.service';
 const config = require('../../config.json');
 
 @Component({
@@ -11,7 +12,7 @@ export class SongItemList {
   @Input() private song: Song;
   private serverUrl: string;
 
-  constructor() {
+  constructor(@Inject(MusicService) private musicService: MusicService) {
     this.serverUrl = config.serverUrl;
   }
 
@@ -21,5 +22,15 @@ export class SongItemList {
 
   getArtistUrl(): string {
     return `${this.serverUrl}${this.song.artistUrl}`;
+  }
+
+  play() {
+    this.musicService.addSong(this.song);
+    this.musicService.songIndex = this.musicService.songList.length - 1;
+    this.musicService.playNow();
+  }
+
+  addToQueue() {
+    this.musicService.addSong(this.song);
   }
 }
