@@ -111,4 +111,8 @@ export class MusicService {
   getDuration(): number {
     return this.audio.duration;
   }
+
+  isPlaying(): boolean {
+    return !this.audio.paused;
+  }
 }

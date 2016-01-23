@@ -1,0 +1,8 @@
+<div id="progress">
+  <div id="progress-click" (mousedown)="onMouseDown($event)" (mouseup)="onMouseUp($event)" (mousemove)="onDrag($event)">
+    <div id="progress-outer">
+      <div id="progress-inner" [ngStyle]="{'width': songPercentage + '%'}"></div>
+      <span id="position" [ngStyle]="{'left': songPercentage + '%'}"></span>
+    </div>
+  </div>
+</div>

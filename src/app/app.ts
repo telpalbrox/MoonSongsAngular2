@@ -1,7 +1,7 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component} from 'angular2/core';
+import {Component, Inject} from 'angular2/core';
 import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 
@@ -14,7 +14,7 @@ import {AuthService} from './providers/auth.service';
 import {Songs} from './songs/songs';
 import {SongsService} from './providers/songs.service';
 import {MusicService} from './providers/music.service';
-
+import {MoonPlayer} from './moon.player/moon.player';
 
 /*
  * App Component
@@ -29,7 +29,12 @@ import {MusicService} from './providers/music.service';
     SongsService,
     MusicService
   ],
-  directives: [ ...ROUTER_DIRECTIVES, RouterActive, Nav ],
+  directives: [
+    ...ROUTER_DIRECTIVES,
+    RouterActive,
+    Nav,
+    MoonPlayer
+  ],
   pipes: [],
   template: `
     <header>
@@ -47,6 +52,7 @@ import {MusicService} from './providers/music.service';
         <span class="pull-left">Moon Songs Angular 2</span>
       </div>
     </footer>
+    <moon-player *ngIf="showPlayer()"></moon-player>
   `
 })
 @RouteConfig([
@@ -56,5 +62,9 @@ import {MusicService} from './providers/music.service';
   { path: '/**', redirectTo: ['Home'] }
 ])
 export class App {
-  constructor() { }
+  constructor(@Inject(MusicService) private musicService: MusicService) { }
+
+  showPlayer(): boolean {
+    return this.musicService.songList.length !== 0;
+  }
 }

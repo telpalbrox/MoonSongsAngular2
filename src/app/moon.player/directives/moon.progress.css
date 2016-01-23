@@ -1,0 +1,67 @@
+#progress {
+  position: relative;
+  min-height: 35px;
+}
+
+#progress-click {
+  height: 18px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 4px;
+}
+
+#progress-outer,
+#progress-inner {
+  background: #3e3e40 none repeat scroll 0 0;
+  border-radius: 11px;
+  bottom: 8px;
+  height: 4px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transition: all .3s;
+}
+
+#progress-outer {
+  background: #3e3e40 none repeat scroll 0 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+#progress-inner {
+  background: #1856bd none repeat scroll 0 0;
+  bottom: 0;
+  right: auto;
+  width: 50px;
+}
+
+#position {
+  background: #fff none repeat scroll 0 0;
+  border: 3px solid #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  display: block;
+  height: 12px;
+  opacity: 0;
+  position: absolute;
+  top: -3px;
+  width: 12px;
+  left: 30px;
+  transition: all .3s;
+  user-select: none;
+}
+
+#progress-click:hover #position{
+  opacity: 1;
+}
+
+#progress-click:hover #progress-outer {
+  height: 6px;
+  bottom: 7px;
+}
+
+#progress-click:hover #progress-inner {
+  height: 6px;
+}
